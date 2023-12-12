@@ -36,6 +36,7 @@
                     <h2>Welcome <?php echo $username?></h2>
                     <ul class="nav">
                         <li><a href="#shop">Shop</a></li>
+
                         <?php
                         $selectToConfirm = "SELECT Count(user_info.username) AS Count FROM user_info INNER JOIN membership ON user_info.userID = membership.userID WHERE username='$username'";
                         $resultToConfirm = mysqli_query($conn, $selectToConfirm);
@@ -44,7 +45,9 @@
                                 $row = mysqli_fetch_assoc($resultToConfirm);
                                     if($row['Count'] > 0) {
                                         ?>
-                                        <li><a href="membership_form.php">You are member</a></li>
+                                        <li><a href="track_progress.php">Track Progress</a></li>
+                                        <li><a href="schedule_workout.php">Schedule Workout</a></li>
+
                                         <?php
                                     }else {
                                         ?>
@@ -102,7 +105,7 @@
 
                         if (mysqli_query($conn, $insertMembership)) {
                             echo "<script>alert('You are now a member');</script>";
-                            header("refresh:0 URL=home_screen.php");
+                            header("refresh:0 URL=new_home_screen.php");
                         }else {
                             echo "<script>alert('Error in selecting');</script>";
                             header("refresh:0 URL=membership_form.php");

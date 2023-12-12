@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
     margin: 0;
@@ -137,6 +138,7 @@
                             if (mysqli_num_rows($select_qrcode_path) > 0) {
                                 $row = mysqli_fetch_assoc($select_qrcode_path);
                                 echo "<img src='img/".$row['qr_image']."' alt='qrcode'>";
+                                echo "<a href='download_qrcode.php?image=".$row['qr_image']."<i class='fas fa-download fa-lg'></i></a>";
                                 echo "<a href='qr_code_generator.php'><button type='button' class='btn btn-secondary'>Re-generate QR code</button></a>";
                                 
                             }
@@ -221,7 +223,7 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="zIp">Zip Code</label>
+                            <label for="zIp">Membership exipire date</label>
                             <input type="text" class="form-control" value="<?php echo $end_date_in_words?>" readonly>
                         </div>
                     </div>
@@ -229,7 +231,8 @@
                 <div class="row gutters">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="text-right">
-                            <a href="logout.php"><button type="button" class="btn btn-primary">Log out</button></a>
+                            <a href="#"><button type="button" class="btn btn-secondary">Cancel Membership</button></a>
+                            <a href="logout.php"><button type="button" class="btn btn-primary">Log out</button></a> 
                         </div>
                     </div>
                 </div>
